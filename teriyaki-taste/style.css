@@ -1,30 +1,33 @@
 body {
-  font-family: 'Arial';
-  background: radial-gradient(circle at top, #1a1a1a, #000);
+  font-family: Arial;
+  background: #0f0f0f;
   color: white;
   margin: 0;
   padding: 40px;
 }
 
 h1 {
-  font-size: 42px;
-  letter-spacing: 2px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 30px;
 }
 
 .item {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
+  background: #1e1e1e;
   padding: 15px;
-  margin: 12px 0;
-  border-radius: 12px;
+  margin: 10px 0;
   display: flex;
   justify-content: space-between;
+  border-radius: 10px;
   transition: 0.2s;
 }
 
 .item:hover {
+  background: #2a2a2a;
   transform: scale(1.02);
-  background: rgba(255,255,255,0.08);
 }
 
 button {
@@ -38,4 +41,11 @@ button {
 
 button:hover {
   opacity: 0.85;
+}
+
+.order {
+  background: #1e1e1e;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
 }
