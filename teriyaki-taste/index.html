@@ -2,20 +2,16 @@
 <html>
 <head>
   <title>Teriyaki Taste</title>
-  <style>
-    body { font-family: Arial; background: #111; color: white; padding: 20px; }
-    .item { background:#222; padding:10px; margin:10px 0; display:flex; justify-content:space-between; }
-    button { background:red; color:white; border:none; padding:5px; cursor:pointer; }
-    .cart { margin-top:20px; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <h1>Teriyaki Taste</h1>
 
 <div id="menu"></div>
 
-<h2>Cart</h2>
+<h2>Your Cart</h2>
 <div id="cart"></div>
 
 <button onclick="checkout()">Place Order</button>
@@ -25,36 +21,42 @@ let menu = [];
 let cart = [];
 
 fetch("/menu")
-  .then(r => r.json())
+  .then(res => res.json())
   .then(data => {
     menu = data;
     renderMenu();
   });
 
-function renderMenu(){
-  document.getElementById("menu").innerHTML = menu.map((item,i)=>`
-    <div class="item">
-      ${item.name} - $${item.price}
-      <button onclick="add(${i})">Add</button>
-    </div>
-  `).join("");
+function renderMenu() {
+  document.getElementById("menu").innerHTML =
+    menu.map((item, i) => `
+      <div class="item">
+        <div>
+          <b>${item.name}</b><br>
+          $${item.price}
+        </div>
+        <button onclick="add(${i})">Add</button>
+      </div>
+    `).join("");
 }
 
-function add(i){
+function add(i) {
   cart.push(menu[i]);
   renderCart();
 }
 
-function renderCart(){
+function renderCart() {
   document.getElementById("cart").innerHTML =
     cart.map(c => `<div>${c.name} - $${c.price}</div>`).join("");
 }
 
-function checkout(){
+function checkout() {
+  let total = cart.reduce((sum, i) => sum + i.price, 0);
+
   fetch("/order", {
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({ items: cart })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: cart, total })
   });
 
   alert("Order placed!");
