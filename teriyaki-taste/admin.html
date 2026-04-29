@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <style>
+    body { font-family: Arial; background:#111; color:white; padding:20px; }
+    .order { background:#222; padding:10px; margin:10px 0; }
+  </style>
+</head>
+<body>
 
+<h1>Admin Orders</h1>
+<div id="orders"></div>
+
+<script>
+fetch("/orders")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("orders").innerHTML =
+      data.map(o => `<div class="order">${JSON.stringify(o)}</div>`).join("");
+  });
+</script>
+
+</body>
+</html>
