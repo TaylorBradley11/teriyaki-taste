@@ -1,1 +1,8 @@
-
+{
+  "menu": [
+    { "name": "Chicken Teriyaki Bowl", "price": 12.99 },
+    { "name": "Beef Teriyaki Bowl", "price": 13.99 },
+    { "name": "Chicken & Shrimp Combo", "price": 15.99 },
+    { "name": "Vegetable Bowl", "price": 10.99 }
+  ]
+}
