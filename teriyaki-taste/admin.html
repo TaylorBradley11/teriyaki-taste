@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
-<style>
-  body { font-family: Arial; background: #111; color: white; padding: 20px; }
-  .item { background:#222; padding:10px; margin:10px 0; display:flex; justify-content:space-between; }
-  button { background:red; color:white; border:none; padding:5px; cursor:pointer; }
-  .cart { margin-top:20px; }
-</style>
+<head>
+  <title>Admin - Teriyaki Taste</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
 
 <h1>Admin Orders</h1>
+
 <div id="orders"></div>
 
 <script>
 fetch("/orders")
-  .then(r => r.json())
+  .then(res => res.json())
   .then(data => {
     document.getElementById("orders").innerHTML =
-      data.map(o => `<div class="order">${JSON.stringify(o)}</div>`).join("");
+      data.map(o => `
+        <div class="order">
+          <b>Order #${o.id}</b><br>
+          Items: ${o.items.map(i => i.name).join(", ")}<br>
+          Total: $${o.total}
+        </div>
+      `).join("");
   });
 </script>
 
