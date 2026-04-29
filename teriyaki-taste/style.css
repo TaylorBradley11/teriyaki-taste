@@ -1,0 +1,41 @@
+body {
+  font-family: 'Arial';
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: white;
+  margin: 0;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+.item {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.02);
+  background: rgba(255,255,255,0.08);
+}
+
+button {
+  background: linear-gradient(90deg, #ff3b3b, #ff7a18);
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
